@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Bcrypt Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h2>🔐 Bcrypt Generator</h2>
+
+  <label>Input String</label>
+  <input type="password" id="inputText" placeholder="Enter text to hash">
+
+  <label>Weightage (Cost Factor)</label>
+  <select id="weightage">
+    <option value="8">8 (Fast)</option>
+    <option value="10">10</option>
+    <option value="12" selected>12 (Recommended)</option>
+    <option value="13">13</option>
+    <option value="14">14 (Very Strong)</option>
+  </select>
+
+  <button id="generate">Generate Hash</button>
+
+  <label>Bcrypt Hash</label>
+  <textarea id="output" readonly placeholder="Hash will appear here"></textarea>
+
+  <button id="copy" class="secondary">Copy Hash</button>
+
+  <p id="status"></p>
+
+  <script src="bcrypt.min.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

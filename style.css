@@ -1,0 +1,61 @@
+body {
+  width: 300px;
+  padding: 15px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+  background: #f9fafb;
+}
+
+h2 {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+input, select, textarea {
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: none;
+  min-height: 70px;
+}
+
+button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 9px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: #10b981;
+}
+
+button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+#status {
+  margin-top: 8px;
+  font-size: 12px;
+  text-align: center;
+}
