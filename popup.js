@@ -1,8 +1,10 @@
 const generateBtn = document.getElementById("generate");
 const copyBtn = document.getElementById("copy");
 const status = document.getElementById("status");
+const bcryptLib = window.bcrypt || (window.dcodeIO && window.dcodeIO.bcrypt);
 
 generateBtn.addEventListener("click", () => {
+
   const input = document.getElementById("inputText").value;
   const weightage = parseInt(document.getElementById("weightage").value);
   const output = document.getElementById("output");
@@ -16,19 +18,39 @@ generateBtn.addEventListener("click", () => {
   status.textContent = "⏳ Generating hash...";
 
   setTimeout(() => {
+
     try {
-      const salt = dcodeIO.bcrypt.genSaltSync(weightage);
-      const hash = dcodeIO.bcrypt.hashSync(input, salt);
+
+      if (!bcryptLib) {
+        throw new Error('bcrypt library not available');
+      }
+
+      // Generate bcrypt hash
+      const salt = bcryptLib.genSaltSync(weightage);
+      const hash = bcryptLib.hashSync(input, salt);
+
       output.value = hash;
-      status.textContent = `✅ Hash generated (cost: ${weightage})`;
+
+      status.textContent =
+        `✅ Hash generated (cost: ${weightage})`;
+
     } catch (e) {
-      status.textContent = "❌ Error generating hash";
+
+      console.error(e);
+
+      status.textContent =
+        "❌ Error generating hash";
+
     }
+
     generateBtn.disabled = false;
+
   }, 50);
+
 });
 
 copyBtn.addEventListener("click", () => {
+
   const output = document.getElementById("output");
 
   if (!output.value) {
@@ -37,5 +59,8 @@ copyBtn.addEventListener("click", () => {
   }
 
   navigator.clipboard.writeText(output.value);
-  status.textContent = "📋 Hash copied to clipboard";
+
+  status.textContent =
+    "📋 Hash copied to clipboard";
+
 });
